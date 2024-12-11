@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus Members</title>
+    <link rel="stylesheet" href="members.css">
+</head>
+<body>
+    <div class="cornerText left">lotus.</div>
+    <div class="cornerText right" onclick="showInfo('members')">info</div>
+    <h1>lotus-members.</h1>
+    <div id="buttonContainer">
+        <button class="lineButton" onclick="redirectToCalendar()">calendar</button>
+        <button class="lineButton" onclick="redirectToManifesto()">manifesto</button>
+        <button class="lineButton" onclick="redirectToArena()">are.na</button>
+    </div>
+    <div id="membersContainer">
+        <div id="membersText">Loading members...</div>
+    </div>
+    <button id="addMemberButton" onclick="redirectToAddMember()">Add Yourself to Members</button>
+    <div id="infoPopup" class="popup hidden">
+        <p id="infoText"></p>
+        <button onclick="closeInfo()">Close</button>
+    </div>
+    <script src="members.js"></script>
+</body>
+</html>

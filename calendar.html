@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotus Calendar</title>
+    <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+    <div class="cornerText left">lotus.</div>
+    <div class="cornerText right" onclick="showInfo('calendar')">info</div>
+    <h1>lotus-calendar.</h1>
+    <div id="buttonContainer">
+        <button class="lineButton" onclick="redirectToManifesto()">manifesto</button>
+        <button class="lineButton" onclick="redirectToJoinUs()">join us</button>
+        <button class="lineButton" onclick="redirectToArena()">are.na</button>
+    </div>
+    <div id="calendarContainer">
+        <div id="calendar">
+            <div class="month">
+                <button onclick="prevMonth()">&#9664;</button>
+                <span id="monthTitle">December 2024</span>
+                <button onclick="nextMonth()">&#9654;</button>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            </div>
+            <div id="days" class="days"></div>
+            <div id="eventInfo" class="eventName"></div>
+        </div>
+    </div>
+    <button id="importButton" onclick="importCalendar()">import calendar</button>
+    <div id="infoPopup" class="popup hidden">
+        <p id="infoText"></p>
+        <button onclick="closeInfo()">Close</button>
+    </div>
+    <script src="calendar.js"></script>
+</body>
+</html>
