@@ -3,7 +3,7 @@ body, html {
     padding: 0;
     height: 100%;
     background-color: #ffffff; /* White background */
-    color: #2b2b2b; /* Dark text */
+    color: #000000; /* Dark text */
     font-family: 'helvetica', bold;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@ h1 {
     font-weight: bold;
     font-size: 2rem; /* Slightly smaller for better alignment */
     margin-bottom: 1rem;
-    width: 800px; /* Match the container width */
+    width: 800px; /* Maintain larger width for the container */
     text-align: left; /* Align the title text to the left */
 }
 
@@ -24,7 +24,7 @@ h1 {
     display: flex;
     justify-content: flex-start; /* Align buttons to the left */
     gap: 8px; /* Space between buttons */
-    width: 800px; /* Match the width of the container */
+    width: 800px; /* Match the container's width */
     margin-bottom: 20px; /* Add spacing below the buttons */
 }
 
@@ -58,24 +58,17 @@ h1 {
     margin-bottom: 20px; /* Add spacing below the container */
 }
 
-/* Add Member Button */
-#addMemberButton {
-    font-size: 0.9rem; /* Smaller font size */
-    padding: 5px 15px; /* Reduce padding for smaller buttons */
-    background-color: transparent; /* No background */
-    color: #2b2b2b; /* Dark text color */
-    border: 1px solid #2b2b2b; /* Dark border */
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    border-radius: 10px; /* Rounded corners */
-    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+#membersText {
+    font-size: 1rem; /* Smaller text for readability */
+    line-height: 1.6; /* Increase line spacing */
+    text-align: left; /* Align text to the left */
+    white-space: normal; /* Ensure proper text wrapping */
 }
 
-#addMemberButton:hover {
-    background-color: #2b2b2b; /* Dark background on hover */
-    color: #ffffff; /* White text on hover */
+#saveButton {
+    margin-top: 20px; /* Add spacing above the Save Changes button */
 }
+
 .cornerText {
     position: absolute;
     font-family: 'Inter', sans-serif;
@@ -123,11 +116,10 @@ h1 {
     border-radius: 5px;
 }
 
-
-/* Responsive styles */
+/* Additional Responsive Styles */
 @media (max-width: 768px) {
     body, html {
-        font-size: 14px;
+        font-size: 12px;
     }
     h1 {
         font-size: 1.5rem;
@@ -144,11 +136,15 @@ h1 {
         text-align: center;
     }
     #calendarContainer, #membersContainer, #manifestContainer {
-        width: 90%;
+        width: 95%;
         height: auto;
         padding: 10px;
     }
-    .cornerText.left, .cornerText.right {
+    #calendar, #manifestText, #membersText {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    .cornerText {
         font-size: 0.7rem;
     }
 }
