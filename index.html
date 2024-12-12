@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lotus Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="cornerText left" onclick="showInfo('manifesto')">lotus.</div>
     <div class="cornerText right" onclick="showInfo('manifesto')">info</div>
     <h1>lotus-website.</h1>
     <div id="buttonContainer">
-        <button class="lineButton" onclick="redirectToCalendar()">calendar</button>
-        <button class="lineButton" onclick="redirectToJoinUs()">join us</button>
-        <button class="lineButton" onclick="redirectToArena()">are.na</button>
+        <button class="lineButton" onclick="location.href='calendar.html'">calendar</button>
+        <button class="lineButton" onclick="location.href='join-us.html'">join us</button>
+        <button class="lineButton" onclick="location.href='https: //www.are.na/choco-star/lotus-9jmtwsari54'">are.na</button>
     </div>
     <div id="manifestContainer">
-        <div id="manifestText">Loading manifesto...</div>
+        <div id="manifestText" contenteditable="true">Loading manifesto...</div>
     </div>
-    <button id="editButton" onclick="redirectToGitHub()">edit manifesto</button>
+    <button id="editButton" onclick="updateBlockContent()">Save Changes</button>
     <div id="infoPopup" class="popup hidden">
         <p id="infoText"></p>
         <button onclick="closeInfo()">Close</button>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
