@@ -1,38 +1,42 @@
-// Fetch the members text from the GitHub repository
-fetch('https://raw.githubusercontent.com/davidhlousek/lotus-website/main/members.txt')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to load members');
-        }
-        return response.text();
-    })
-    .then(text => {
-        document.getElementById('membersText').innerText = text;
-    })
-    .catch(error => {
-        console.error('Error loading members:', error);
-        document.getElementById('membersText').innerText = 'Failed to load members.';
-    });
+const API_TOKEN = 'bQLBl-l2juEBBD89WPMP5OKjdknJrtcfW1i1rk9ikeA'; // New token
+const BLOCK_ID = '32937080'; // New block ID
 
-// Redirect to the Calendar page (local HTML file)
-function redirectToCalendar() {
-    window.location.href = "calendar.html"; // Ensure this file exists in the same directory
+async function fetchBlockContent() {
+    try {
+        const response = await fetch(`https://api.are.na/v2/blocks/${BLOCK_ID}`, {
+            headers: {
+                'Authorization': `Bearer ${API_TOKEN}`
+            }
+        });
+        if (!response.ok) throw new Error('Failed to fetch block content');
+
+        const data = await response.json();
+        document.getElementById('membersText').innerText = data.content || '';
+    } catch (error) {
+        console.error('Error fetching block content:', error);
+        alert('Failed to load content. Please try again later.');
+    }
 }
 
-// Redirect to the Manifesto page (local HTML file)
-function redirectToManifesto() {
-    window.location.href = "index.html"; // Replace with your manifesto HTML file if needed
+async function updateBlockContent() {
+    const content = document.getElementById('membersText').innerText;
+    try {
+        const response = await fetch(`https://api.are.na/v2/blocks/${BLOCK_ID}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${API_TOKEN}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ content })
+        });
+        if (!response.ok) throw new Error('Failed to update block content');
+        alert('Content updated successfully!');
+    } catch (error) {
+        console.error('Error updating block content:', error);
+        alert('Failed to update content. Please try again later.');
+    }
 }
 
-// Redirect to the Are.na website (external link)
-function redirectToArena() {
-    window.location.href = "https://www.are.na/choco-star/lotus-9jmtwsari54"; // Link to the Are.na site
-}
-
-// Redirect to the GitHub page for adding members
-function redirectToAddMember() {
-    window.location.href = "https://github.com/davidhlousek/lotus-website/edit/main/members.txt";
-}
 function showInfo(context) {
     const infoTexts = {
         manifesto: "hi, this is our manifesto. feel free to add or delete anything you want. you can edit it by clicking on button and logging in your github account.",
@@ -40,7 +44,8 @@ function showInfo(context) {
         calendar: "hi, this is our calendar. you can find all of our upcoming events marked here. by clicking on the export button you will download a calendar file which you can add to your google calendar or apple calendar so you don't have to look for info on any social sites bullshit."
     };
 
-    document.getElementById("infoText").innerText = infoTexts[context];
+    const infoText = infoTexts[context];
+    document.getElementById("infoText").innerText = infoText || "No information available.";
     document.getElementById("infoPopup").classList.remove("hidden");
     document.getElementById("infoPopup").style.display = "block";
 }
@@ -49,3 +54,5 @@ function closeInfo() {
     document.getElementById("infoPopup").classList.add("hidden");
     document.getElementById("infoPopup").style.display = "none";
 }
+
+document.addEventListener('DOMContentLoaded', fetchBlockContent);
